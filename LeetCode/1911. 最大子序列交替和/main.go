@@ -33,3 +33,44 @@ func maxAlternatingSum2(nums []int) int64 {
 	}
 	return int64(f1)
 }
+
+// 算法 3：dfs (超时）
+func maxAlternatingSum3(nums []int) int64 {
+	n := len(nums)
+	var dfs func(int, int) int
+	dfs = func(i, odd int) int {
+		if i < 0 {
+			return 0
+		}
+		if odd == 1 {
+			return max(dfs(i-1, 1), dfs(i-1, 0)+nums[i])
+		}
+		return max(dfs(i-1, 0), dfs(i-1, 1)-nums[i])
+	}
+	return int64(dfs(n-1, 1))
+}
+
+// 算法 4：dfs + 记忆化
+func maxAlternatingSum4(nums []int) int64 {
+	n := len(nums)
+	memo := make([][2]int, n)
+	for i := range memo {
+		memo[i] = [2]int{-1, -1}
+	}
+	var dfs func(int, int) int
+	dfs = func(i, odd int) (res int) {
+		if i < 0 {
+			return 0
+		}
+		m := &memo[i][odd]
+		if *m != -1 {
+			return *m
+		}
+		defer func() { *m = res }()
+		if odd == 1 {
+			return max(dfs(i-1, 1), dfs(i-1, 0)+nums[i])
+		}
+		return max(dfs(i-1, 0), dfs(i-1, 1)-nums[i])
+	}
+	return int64(dfs(n-1, 1))
+}
