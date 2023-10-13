@@ -30,6 +30,5 @@ func avoidFlood(rains []int) []int {
 			lakeIdx[lake] = i
 		}
 	}
-
 	return ans
 }
