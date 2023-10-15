@@ -36,6 +36,7 @@ func shortestBeautifulSubstring1(s string, k int) string {
 	ans := s // 初始化为最大的子串（s 本身）
 	cnt := 0
 	left := 0
+
 	for right, b := range s {
 		cnt += int(b & 1)
 		for cnt > k || s[left] == '0' {
@@ -44,7 +45,7 @@ func shortestBeautifulSubstring1(s string, k int) string {
 		}
 		if cnt == k {
 			t := s[left : right+1]
-			// t < ans 这部分时间爱你复杂度是 O(N) 的，可以用字符串哈希 || 后缀数组优化成 O(nlogn)
+			// t < ans 这部分的时间复杂度是 O(N) 的，可以用字符串哈希 || 后缀数组优化成 O(nlogn)
 			if len(t) < len(ans) || len(t) == len(ans) && t < ans {
 				ans = t
 			}
