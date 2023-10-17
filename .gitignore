@@ -17,8 +17,8 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
-/.vscode/
-/.idea/
+.vscode/
+.idea/
 
 # Go workspace file
 go.work
