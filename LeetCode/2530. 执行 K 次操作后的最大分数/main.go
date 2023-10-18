@@ -45,7 +45,7 @@ func (h *hp) replace(v int) int {
 // pushPop 将 v 入堆，然后弹出并返回堆顶
 // 使用见下面的 dynamicMedians
 func (h *hp) pushPop(v int) int {
-	if h.Len() > 0 && v > h.IntSlice[0] { // 最大堆改成 v < h.IntSlice[0]
+	if h.Len() > 0 && v < h.IntSlice[0] { // 最大堆改成 v < h.IntSlice[0]
 		v, h.IntSlice[0] = h.IntSlice[0], v
 		heap.Fix(h, 0)
 	}
