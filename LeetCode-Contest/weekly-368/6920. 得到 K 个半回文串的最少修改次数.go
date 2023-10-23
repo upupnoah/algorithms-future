@@ -45,12 +45,15 @@ func calc(s string) int {
 func minimumChanges(s string, k int) (ans int) {
 	n := len(s)
 	modify := make([][]int, n-1)
+
+	// preprocessing the modification times of s[l~r] = s[l:r+1]
 	for l := range modify {
-		modify[l] = make([]int, n)
 		for r := l + 1; r < n; r++ {
 			modify[l][r] = calc(s[l : r+1])
 		}
 	}
+
+	// memoization slice for dfs
 	memo := make([][]int, k)
 	for i := range memo {
 		memo[i] = make([]int, n)
@@ -61,18 +64,21 @@ func minimumChanges(s string, k int) (ans int) {
 	var dfs func(int, int) int
 	dfs = func(i, j int) int {
 		if i == 0 {
-			return modify[i][j]
+			return modify[0][j]
 		}
 		p := &memo[i][j]
 		if *p != -1 {
 			return *p
 		}
 		res := n
-		defer func() { *p = res }()
+		defer func() { *p = res }() // memoization
+
+		// At least i groups. (because divide i-1 times， is means i substring)
+		// one substring need at least two characters
 		for L := i * 2; L < j; L++ {
 			res = min(res, dfs(i-1, L-1)+modify[L][j])
 		}
 		return res
 	}
-	return dfs(k-1, n-1)
+	return dfs(k-1, n-1) // divide k-1 times, from 0 to n-1
 }
