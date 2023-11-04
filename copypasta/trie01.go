@@ -18,8 +18,9 @@ import (
 // 数组前缀异或数组后缀的最大值（前后缀不重叠）https://codeforces.com/problemset/problem/282/E
 // https://codeforces.com/contest/1446/problem/C
 // todo https://codeforces.com/problemset/problem/1055/F
-//  转换 https://codeforces.com/contest/1720/problem/D2
-//  异或和 ≥k 的最短区间 https://acm.hdu.edu.cn/showproblem.php?pid=6955
+//
+//	转换 https://codeforces.com/contest/1720/problem/D2
+//	异或和 ≥k 的最短区间 https://acm.hdu.edu.cn/showproblem.php?pid=6955
 type trie01Node struct {
 	son [2]*trie01Node
 	cnt int // 子树叶子数
@@ -32,7 +33,7 @@ func newTrie01() *trie01 { return &trie01{&trie01Node{min: math.MaxInt32}} }
 
 const trieBitLen = 31 // 30 for 1e9, 63 for int64, or bits.Len(MAX_VAL)
 
-func (trie01) bin(v int) []byte {
+func (*trie01) bin(v int) []byte {
 	s := make([]byte, trieBitLen)
 	for i := range s {
 		s[i] = byte(v >> (trieBitLen - 1 - i) & 1)
@@ -242,7 +243,9 @@ func (o trie01Node) put(v, k int) *trie01Node {
 // 传入 n 和数据范围上限 maxV
 // 返回 n 个数，每个数的范围在 [0, maxV] 中
 // 当 maxV = 2^30-1 时，各个 n 下的 0-1 trie 节点数
-//   n   节点数
+//
+//	n   节点数
+//
 // 1e5 1531071
 // 2e5 2862143
 // 3e5 4124287
@@ -254,7 +257,9 @@ func (o trie01Node) put(v, k int) *trie01Node {
 // 9e5 10948575
 // 1e6 12048575
 // 当 maxV = 1e9 时，各个 n 下的 0-1 trie 节点数
-//   n   节点数
+//
+//	n   节点数
+//
 // 1e5 1522076
 // 2e5 2844147
 // 3e5 4088288
