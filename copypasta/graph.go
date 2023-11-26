@@ -763,7 +763,9 @@ func (*graph) findCutVertices(n int, g [][]int, min func(int, int) int) (isCut [
 // https://oi-wiki.org/graph/cut/#_4
 // https://algs4.cs.princeton.edu/41graph/Bridge.java.html
 // 模板题 LC1192 https://leetcode-cn.com/problems/critical-connections-in-a-network/
-//       https://codeforces.com/problemset/problem/1000/E
+//
+//	https://codeforces.com/problemset/problem/1000/E
+//
 // 题目推荐 https://cp-algorithms.com/graph/bridge-searching.html#toc-tgt-2
 // 与 MST 结合 https://codeforces.com/problemset/problem/160/D
 // 与最短路结合 https://codeforces.com/problemset/problem/567/E
@@ -1034,8 +1036,10 @@ func (h *dijkstraHeap) pop() dijkstraPair    { return heap.Pop(h).(dijkstraPair)
 // 最短路问题笔记 https://www.luogu.com.cn/blog/SCN/zui-duan-lu-wen-ti-bi-ji
 //
 // 模板题 https://www.luogu.com.cn/problem/P3371 https://www.luogu.com.cn/problem/P4779
-//       https://codeforces.com/problemset/problem/20/C
-//       LC743 https://leetcode-cn.com/problems/network-delay-time/
+//
+//	https://codeforces.com/problemset/problem/20/C
+//	LC743 https://leetcode-cn.com/problems/network-delay-time/
+//
 // 最短路个数 https://www.luogu.com.cn/problem/P1608
 // 通过最短路找到可以删除的边 https://codeforces.com/problemset/problem/449/B
 // 稠密图 https://atcoder.jp/contests/arc064/tasks/arc064_c
@@ -1056,8 +1060,10 @@ func (h *dijkstraHeap) pop() dijkstraPair    { return heap.Pop(h).(dijkstraPair)
 // todo 与扩欧结合 https://www.acwing.com/problem/content/3418/
 // 跑两遍最短路，第二次修正边权来改变最短路 https://codeforces.com/problemset/problem/715/B
 // 分层图最短路
-//    空间压缩 https://codeforces.com/problemset/problem/1442/C
-//    转换 https://codeforces.com/problemset/problem/1473/E
+//
+//	空间压缩 https://codeforces.com/problemset/problem/1442/C
+//	转换 https://codeforces.com/problemset/problem/1473/E
+//
 // todo 动态最短路 https://codeforces.com/problemset/problem/1163/F
 //
 // 最短路径树
@@ -1257,7 +1263,9 @@ func (*graph) shortestPathDijkstra2(g [][]int64, st int) []int64 {
 // 建图技巧 https://codeforces.com/problemset/problem/821/D
 // 建图技巧 https://codeforces.com/problemset/problem/1340/C
 // 哪里有 1 https://atcoder.jp/contests/abc213/tasks/abc213_e
-//         https://atcoder.jp/contests/abc176/tasks/abc176_d
+//
+//	https://atcoder.jp/contests/abc176/tasks/abc176_d
+//
 // https://codeforces.com/problemset/problem/877/D（也可以 BFS）
 // https://codeforces.com/problemset/problem/1063/B
 // https://codeforces.com/problemset/problem/1442/C
@@ -1709,7 +1717,8 @@ func (*graph) mstPrim(dis [][]int, root int) (mst int, edges [][2]int) {
 // https://www.geeksforgeeks.org/boruvkas-algorithm-greedy-algo-9/
 // https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BoruvkaMST.java.html
 // todo http://codeforces.com/problemset/problem/888/G
-//  https://codeforces.com/problemset/problem/1550/F https://www.luogu.com.cn/blog/ETHANK/boruvka-xiao-ji
+//
+//	https://codeforces.com/problemset/problem/1550/F https://www.luogu.com.cn/blog/ETHANK/boruvka-xiao-ji
 func (*graph) boruvkaMST(n, m int) (sum int64) {
 	return
 }
@@ -1849,7 +1858,8 @@ func (*graph) limitDegreeMST(dis [][]int, root, lim int) int {
 // https://cp-algorithms.com/graph/second_best_mst.html
 // 模板题（严格）https://www.luogu.com.cn/problem/P4180 https://www.acwing.com/problem/content/358/
 // 注：非严格次小生成树
-//     做法更加简单，维护路径最大值即可，见 https://oi-wiki.org/graph/mst/#_10
+//
+//	做法更加简单，维护路径最大值即可，见 https://oi-wiki.org/graph/mst/#_10
 func (*graph) strictlySecondMST(n int, edges []struct{ v, w, wt int }, min, max func(int, int) int) int {
 	sort.Slice(edges, func(i, j int) bool { return edges[i].wt < edges[j].wt })
 
@@ -2142,7 +2152,8 @@ func (*graph) minDiffMST(n int, edges [][3]int) int {
 // https://en.wikipedia.org/wiki/Edmonds%27_algorithm
 // https://oi-wiki.org/graph/dmst/
 // todo 另外还有 Tarjan 的 O(m+nlogn) 算法
-//  https://oi-wiki.org/graph/dmst/#tarjan-dmst
+//
+//	https://oi-wiki.org/graph/dmst/#tarjan-dmst
 //
 // 模板题 https://www.luogu.com.cn/problem/P4716
 // todo https://codeforces.com/problemset/problem/240/E
@@ -2298,7 +2309,9 @@ func (*graph) inverseGraphComponents(n int, g [][]int) [][]int {
 // https://codeforces.com/problemset/problem/1537/F
 // 转换 https://codeforces.com/problemset/problem/85/E
 // 染色的技巧 https://codeforces.com/problemset/problem/553/C
-//          https://codeforces.com/problemset/problem/662/B
+//
+//	https://codeforces.com/problemset/problem/662/B
+//
 // 树至多加多少条边仍然是二分图 https://codeforces.com/problemset/problem/862/B
 // 与背包结合（NEERC01，紫书例题 9-19，UVa 1627）https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=825&page=show_problem&problem=4502
 // 与分组背包结合 https://codeforces.com/problemset/problem/1354/E
@@ -2404,7 +2417,9 @@ DAG 上的最小路径覆盖，要求路径之间不相交，即每个顶点恰�
 // 二分图最大匹配 - 匈牙利算法/增广路算法 O(nm)    Hungarian algorithm
 // 注：使用 Dinic 可以达到 O(m√n) 的复杂度
 // 【推荐】可视化 https://visualgo.net/zh/matching
-//        选择「图示 - CP4 3.11a*」，然后选择「增广路 - 标准」
+//
+//	选择「图示 - CP4 3.11a*」，然后选择「增广路 - 标准」
+//
 // https://www.renfei.org/blog/bipartite-matching.html 推荐
 // https://oi-wiki.org/topic/graph-matching/bigraph-match/
 // https://zhuanlan.zhihu.com/p/62981901
@@ -2416,10 +2431,11 @@ DAG 上的最小路径覆盖，要求路径之间不相交，即每个顶点恰�
 // 模板题 https://www.luogu.com.cn/problem/P3386
 // LCP04 https://leetcode-cn.com/problems/broken-board-dominoes/
 // LC2123 https://leetcode.cn/problems/minimum-operations-to-remove-adjacent-ones-in-matrix/
-//【网络流 24 题】飞行员配对方案 https://loj.ac/p/6000 https://www.luogu.com.cn/problem/P2756
-//【网络流 24 题】骑士共存（这题 Dinic 更快）https://loj.ac/p/6226 https://www.luogu.com.cn/problem/P3355
+// 【网络流 24 题】飞行员配对方案 https://loj.ac/p/6000 https://www.luogu.com.cn/problem/P2756
+// 【网络流 24 题】骑士共存（这题 Dinic 更快）https://loj.ac/p/6226 https://www.luogu.com.cn/problem/P3355
 // todo https://codeforces.com/contest/1404/problem/E
-//      https://codeforces.com/problemset/problem/1783/F 题解 https://www.luogu.com.cn/blog/DaiRuiChen007/CF1783F
+//
+//	https://codeforces.com/problemset/problem/1783/F 题解 https://www.luogu.com.cn/blog/DaiRuiChen007/CF1783F
 func (*graph) maxBipartiteMatchingHungarian(g [][]int) (match []int, cnt int) {
 	match = make([]int, len(g))
 	for i := range match {
@@ -2689,19 +2705,25 @@ func (*graph) maxWeightedBipartiteMatchingKuhnMunkres(wt [][]int64) (match []int
 // https://cp-algorithms.com/graph/topological-sort.html
 // 树上拓扑+记录变成叶子的时间 LC2603 https://leetcode.cn/problems/collect-coins-in-a-tree/
 // DAG DP LC2050 https://leetcode-cn.com/problems/parallel-courses-iii/
-//        LC1857 https://leetcode-cn.com/problems/largest-color-value-in-a-directed-graph/
-//        https://ac.nowcoder.com/acm/contest/6384/C
-//        https://www.luogu.com.cn/problem/P3387
-//        https://codeforces.com/problemset/problem/721/C
+//
+//	LC1857 https://leetcode-cn.com/problems/largest-color-value-in-a-directed-graph/
+//	https://ac.nowcoder.com/acm/contest/6384/C
+//	https://www.luogu.com.cn/problem/P3387
+//	https://codeforces.com/problemset/problem/721/C
+//
 // 删点 LC310 https://leetcode.cn/problems/minimum-height-trees/
 // 好题 https://codeforces.com/problemset/problem/915/D
 // 关键点 次关键点 https://codeforces.com/contest/1062/problem/F
 // 混合图拓扑排序+定向 https://codeforces.com/problemset/problem/1385/E
-//                  https://codeforces.com/problemset/problem/1100/E
+//
+//	https://codeforces.com/problemset/problem/1100/E
+//
 // 构造 https://codeforces.com/problemset/problem/269/C
 // 缩点后的拓扑序 https://codeforces.com/contest/1463/problem/E
 // 与堆结合 https://codeforces.com/problemset/problem/825/E
-//         https://codeforces.com/problemset/problem/1283/F
+//
+//	https://codeforces.com/problemset/problem/1283/F
+//
 // 利用拓扑思想 https://codeforces.com/problemset/problem/1037/E
 // https://codeforces.com/problemset/problem/1572/A
 // 拓扑序是否唯一：任意时刻队列中不能有超过一个元素
@@ -2774,7 +2796,9 @@ func (*graph) topSort(in io.Reader, n, m int) []int {
 // https://oi-wiki.org/graph/scc/#kosaraju
 // https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/KosarajuSharirSCC.java.html
 // 模板题 https://www.luogu.com.cn/problem/P1726
-//       https://atcoder.jp/contests/practice2/tasks/practice2_g
+//
+//	https://atcoder.jp/contests/practice2/tasks/practice2_g
+//
 // https://www.luogu.com.cn/problem/P2341
 // 建图转换 https://codeforces.com/problemset/problem/1239/D
 // 与高斯消元结合 https://www.luogu.com.cn/problem/P6030
@@ -2969,14 +2993,16 @@ func (*graph) sccTarjan(g [][]int, min func(int, int) int) ([][]int, []int) {
 // 讲解+套题 https://codeforces.com/blog/entry/16205
 // 2-SAT 总结 by kuangbin https://www.cnblogs.com/kuangbin/archive/2012/10/05/2712429.html
 // NOTE: 一些建边的转换：
-//       A 为真          (A)     ¬A⇒A     注：A ⇔ A∨A ⇔ ¬A⇒A∧¬A⇒A ⇔ ¬A⇒A
-//       A 为假          (¬A)    A⇒¬A
-//       A 为真 B 就为真          A⇒B, ¬B⇒¬A
-//       A 为假 B 就为假          ¬A⇒¬B, B⇒A
-//       A,B 至少存在一个 (A|B)    ¬A⇒B, ¬B⇒A 意思是一个为假的时候，另一个一定为真 https://www.luogu.com.cn/problem/P4782
-//       A,B 不能同时存在 (¬A|¬B)  A⇒¬B, B⇒¬A 就是上面的式子替换了一下（一个为真，另一个一定为假）
-//       A,B 必须且只一个 (A^B)    A⇒¬B, B⇒¬A, ¬A⇒B, ¬B⇒A
-//       A,B 同时或都不在 (¬(A^B)) A⇒B, B⇒A, ¬A⇒¬B, ¬B⇒¬A
+//
+//	A 为真          (A)     ¬A⇒A     注：A ⇔ A∨A ⇔ ¬A⇒A∧¬A⇒A ⇔ ¬A⇒A
+//	A 为假          (¬A)    A⇒¬A
+//	A 为真 B 就为真          A⇒B, ¬B⇒¬A
+//	A 为假 B 就为假          ¬A⇒¬B, B⇒A
+//	A,B 至少存在一个 (A|B)    ¬A⇒B, ¬B⇒A 意思是一个为假的时候，另一个一定为真 https://www.luogu.com.cn/problem/P4782
+//	A,B 不能同时存在 (¬A|¬B)  A⇒¬B, B⇒¬A 就是上面的式子替换了一下（一个为真，另一个一定为假）
+//	A,B 必须且只一个 (A^B)    A⇒¬B, B⇒¬A, ¬A⇒B, ¬B⇒A
+//	A,B 同时或都不在 (¬(A^B)) A⇒B, B⇒A, ¬A⇒¬B, ¬B⇒¬A
+//
 // NOTE: 单独的条件 x为a 可以用 (x为a)∨(x为a) 来表示
 // 模板题 https://www.luogu.com.cn/problem/P4782
 // 建边练习【模板代码】 https://codeforces.com/contest/468/problem/B
@@ -4079,7 +4105,9 @@ func (*graph) maximalCliques(g []int64, max func(int, int) int) int {
 // 因此枚举的复杂度为 ∑in[w]*out[w]
 // 直接枚举肯定不行，不妨给边定向：度数大的指向度数小的，或者度数相同时编号小的指向编号大的（全序，从而得到一个 DAG）
 // 考察枚举中的 w：若 deg[w]>√m，由于度数超过 √m 的点的个数至多为 O(√m)，根据定向规则，w 的入度也至多为 O(√m)；
-//               若 deg[w]<=√m，由于 w 的邻边数量就是 deg[w]，所以入度也至多为 O(√m)
+//
+//	若 deg[w]<=√m，由于 w 的邻边数量就是 deg[w]，所以入度也至多为 O(√m)
+//
 // 因此，这种定向方式保证了枚举中的 w 的入度至多为 O(√m)，从而总体复杂度为 ∑in[w]*out[w] < √m*∑out[w] < √m*m
 // 注：若定向时从度数小的指向度数大的，同样地，w 的出度至多为 O(√m)，从而复杂度亦为 O(m√m)
 // 讲解+题目 https://blog.nowcoder.net/n/9bfaeb850d6f4df6b257ffcf8e5889dd
