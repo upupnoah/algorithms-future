@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func minGroupsForValidAssignment(nums []int) int {
 	cnt := make(map[int]int)
 	for _, x := range nums {
@@ -29,16 +25,16 @@ func minGroupsForValidAssignment(nums []int) int {
 	}
 }
 
-func main() {
-	//输入：nums = [3,2,3,2,3]
-	//输出：2
-	fmt.Println(minGroupsForValidAssignment([]int{3, 2, 3, 2, 3}))
+// func main() {
+// 	//输入：nums = [3,2,3,2,3]
+// 	//输出：2
+// 	fmt.Println(minGroupsForValidAssignment([]int{3, 2, 3, 2, 3}))
 
-	//输入：nums = [10,10,10,3,1,1]
-	//输出：4
-	fmt.Println(minGroupsForValidAssignment([]int{10, 10, 10, 3, 1, 1}))
+// 	//输入：nums = [10,10,10,3,1,1]
+// 	//输出：4
+// 	fmt.Println(minGroupsForValidAssignment([]int{10, 10, 10, 3, 1, 1}))
 
-	//输入：nums = [1,1,3,3,1,1,2,2,3,1,3,2]
-	//输出：5
-	fmt.Println(minGroupsForValidAssignment([]int{1, 1, 3, 3, 1, 1, 2, 2, 3, 1, 3, 2}))
-}
+// 	//输入：nums = [1,1,3,3,1,1,2,2,3,1,3,2]
+// 	//输出：5
+// 	fmt.Println(minGroupsForValidAssignment([]int{1, 1, 3, 3, 1, 1, 2, 2, 3, 1, 3, 2}))
+// }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -28,13 +27,13 @@ func minimumSum(a []int) (ans int) {
 	return
 }
 
-func main() {
-	//输入：nums = [8,6,1,5,3]
-	//输出：9
-	fmt.Println(minimumSum([]int{8, 6, 1, 5, 3}))
+// func main() {
+// 	//输入：nums = [8,6,1,5,3]
+// 	//输出：9
+// 	fmt.Println(minimumSum([]int{8, 6, 1, 5, 3}))
 
-	//输入：nums = [5,4,8,7,10,2]
-	//输出：13
-	fmt.Println(minimumSum([]int{5, 4, 8, 7, 10, 2}))
+// 	//输入：nums = [5,4,8,7,10,2]
+// 	//输出：13
+// 	fmt.Println(minimumSum([]int{5, 4, 8, 7, 10, 2}))
 
-}
+// }
