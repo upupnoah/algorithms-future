@@ -1,6 +1,6 @@
 package make_smallest_palindrome
 
-// 思路: 字典序最小 -> 转换的时候优先换成字典序的(双指针)
+// 思路: 字典序最小 -> 转换的时候换成字典序小的(双指针)
 func makeSmallestPalindrome(s string) string {
 	n := len(s)
 	str := []byte(s)
