@@ -3,42 +3,40 @@ struct Solution;
 impl Solution {
     pub fn day_of_the_week(day: i32, month: i32, year: i32) -> String {
         // region:    --- 模拟
-        // let months = [
-        //     31, // 1
-        //     28, // 2
-        //     31, // 3
-        //     30, // 4
-        //     31, // 5
-        //     30, // 6
-        //     31, // 7
-        //     31, // 8
-        //     30, // 9
-        //     31, // 10
-        //     30, // 11
-        //     31, // 12
-        // ];
-        // let mut days = 0;
-        // // 输入年份之前的年份的天数贡献
-        // days += (year - 1971) * 365 + (year - 1969) / 4;
-        //  // 输入年份中，输入月份之前的月份的天数贡献
-        // for i in 0..month - 1 {
-        //     days += months[i as usize];
-        // }
-        // if month >= 3 && (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
-        //     days += 1;
-        // }
+        let months = vec![
+            31, // 1
+            28, // 2
+            31, // 3
+            30, // 4
+            31, // 5
+            30, // 6
+            31, // 7
+            31, // 8
+            30, // 9
+            31, // 10
+            30, // 11
+            31, // 12
+        ];
+        let mut days = 0;
+        // 输入年份之前的年份的天数贡献
+        days += (year - 1971) * 365 + (year - 1969) / 4;
+        // 输入年份中，输入月份之前的月份的天数贡献
+        days += &months[..(month - 1) as usize].iter().sum();
+        if month >= 3 && (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+            days += 1;
+        }
         // // 输入月份中的天数贡献
-        // days += day;
-        // return match days % 7 {
-        //     0 => "Thursday".to_string(),
-        //     1 => "Friday".to_string(),
-        //     2 => "Saturday".to_string(),
-        //     3 => "Sunday".to_string(),
-        //     4 => "Monday".to_string(),
-        //     5 => "Tuesday".to_string(),
-        //     6 => "Wednesday".to_string(),
-        //     _ => "".to_string(),
-        // };
+        days += day;
+        return match days % 7 {
+            0 => "Thursday".to_string(),
+            1 => "Friday".to_string(),
+            2 => "Saturday".to_string(),
+            3 => "Sunday".to_string(),
+            4 => "Monday".to_string(),
+            5 => "Tuesday".to_string(),
+            6 => "Wednesday".to_string(),
+            _ => "".to_string(),
+        };
         // endregion: --- 模拟
 
         // region:    --- 基姆拉尔森公式
