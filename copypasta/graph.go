@@ -1449,7 +1449,7 @@ func (*graph) floydWarshallBitset(in io.Reader, n, m int) []int {
 	for k := range vs {
 		for i := range vs {
 			if vs[i].Has(k) {
-				vs[i].UnionFrom(vs[k]) // i->j 现在可以 i->k->j
+				// vs[i].UnionFrom(vs[k]) // i->j 现在可以 i->k->j
 			}
 		}
 	}
