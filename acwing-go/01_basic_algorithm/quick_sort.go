@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// 快速排序 quick sort
+
 func quickSort(q []int, l int, r int) {
 	if l >= r { // Check the boundary condition, return if there's only one element or no elements in the range
 		return
@@ -36,5 +38,4 @@ func main() {
 	for i := 0; i < n; i++ {
 		fmt.Printf("%d ", q[i])
 	}
-	return
 }
