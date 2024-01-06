@@ -1,28 +1,38 @@
 #![allow(dead_code)]
-
 struct Solution;
-impl Solution {
-    // 单调栈
-    // 从右往左遍历, 维护一个单调递减的栈
-    // 如果当前元素比栈顶元素小, 那么当前元素就能看到栈顶元素
-    pub fn can_see_persons_count(heights: Vec<i32>) -> Vec<i32> {
-        let n = heights.len();
-        let (mut ans, mut stk) = (vec![0; n], vec![std::i32::MAX]);
-        for (i, v) in heights.into_iter().enumerate().rev() {
-            while let Some(&top) = stk.last() {
-                if top < v {
-                    ans[i] += 1;
-                    stk.pop();
-                } else {
-                    break;
-                }
-            }
-            if stk.len() > 1 {
-                ans[i] += 1;
-            }
-            stk.push(v);
-        }
-        ans
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
     }
 }
+impl Solution {
+    pub fn insert_greatest_common_divisors(
+        mut head: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
+        let mut cur = &mut head;
+
+        while cur.as_ref().unwrap().next.is_some() {
+            let x = cur.as_mut().unwrap();
+            let next = x.next.take();
+            x.next = Some(Box::new(ListNode {
+                val: gcd(x.val, next.as_ref().unwrap().val),
+                next,
+            }));
+            cur = &mut cur.as_mut().unwrap().next.as_mut().unwrap().next;
+        }
+        head
+    }
+}
+fn gcd(a: i32, b: i32) -> i32 {
+    return if b == 0 { a } else { gcd(b, a % b) };
+}
+
 fn main() {}
