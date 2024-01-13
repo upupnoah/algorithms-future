@@ -17,11 +17,11 @@ impl Solution {
     pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut cur = head.as_mut();
         while let Some(node) = cur.take() {
-            while let Some(next) = node.next.as_mut() {
-                if node.val != next.val {
-                    break;
+            while let Some(front) = node.next.as_mut() {
+                if node.val == front.val {
+                    node.next = front.next.take();
                 } else {
-                    node.next = next.next.take();
+                    break;
                 }
             }
             cur = node.next.as_mut();
