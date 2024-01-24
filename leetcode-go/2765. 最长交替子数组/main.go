@@ -32,11 +32,11 @@ func alternatingSubarray(nums []int) int {
 	idx := 0
 	for i := 1; i < n; i++ {
 		len := i - idx + 1
-		if nums[i] - nums[idx] == (len-1) % 2 {
+		if nums[i]-nums[idx] == (len-1)%2 {
 			res = max(res, len)
 		} else {
-			if nums[i] - nums[i-1] == 1 {
-				idx = i-1
+			if nums[i]-nums[i-1] == 1 {
+				idx = i - 1
 				res = max(res, 2)
 			} else {
 				idx = i
