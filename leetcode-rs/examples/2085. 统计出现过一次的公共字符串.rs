@@ -17,7 +17,7 @@ impl Solution {
         words2
             .into_iter()
             .for_each(|x| *cnt2.entry(x).or_insert(0) += 1);
-        
+
         let mut ans = 0;
         for (k, v) in cnt1 {
             if let Some(&u) = cnt2.get(&k) {
