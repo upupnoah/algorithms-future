@@ -16,7 +16,7 @@ impl Solution {
         Self::gcd(b, a % b)
     }
 
-    // 记忆化搜索
+    // DFS
     pub fn can_measure_water(x: i32, y: i32, t: i32) -> bool {
         let mut vis = std::collections::HashSet::new();
         Self::dfs(0, 0, x, y, t, &mut vis)

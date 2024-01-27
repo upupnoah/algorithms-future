@@ -1,6 +1,6 @@
 package can_measure_water
 
-// 记忆化搜索
+// DFS
 func canMeasureWater(x int, y int, t int) bool {
 	var dfs func(int, int) bool
 	memo := make(map[[2]int]bool)
