@@ -12,8 +12,8 @@ impl Solution {
             if i - q.front().unwrap() > k as usize {
                 q.pop_front();
             }
-            dp[i] = dp[q.front().unwrap()] + nums[i];
-            while q.len() > 0 && dp[q.back().unwrap()] <= dp[i] {
+            dp[i] = dp[*q.front().unwrap() as usize] + nums[i];
+            while q.len() > 0 && dp[*q.back().unwrap()] <= dp[i] {
                 q.pop_back();
             }
             q.push_back(i);

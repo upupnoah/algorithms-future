@@ -7,13 +7,13 @@ impl Solution {
         let mut dp = vec![0; n];
         dp[0] = nums[0];
         let mut q = std::collections::VecDeque::new();
-        q.push_back(0);
+        q.push_back(0usize);
         for i in 1..n {
-            if i - q.front().unwrap() > k {
+            if i - q.front().unwrap() > k as usize {
                 q.pop_front();
             }
-            dp[i] = dp[q.front().unwrap()] + nums[i];
-            while q.len() > 0 && dp[q.back().unwrap()] <= dp[i] {
+            dp[i] = dp[*q.front().unwrap() as usize] + nums[i];
+            while q.len() > 0 && dp[*q.back().unwrap()] <= dp[i] {
                 q.pop_back();
             }
             q.push_back(i);
