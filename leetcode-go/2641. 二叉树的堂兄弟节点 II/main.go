@@ -10,11 +10,11 @@ func replaceValueInTree(root *TreeNode) *TreeNode {
 	root.Val = 0
 	q := []*TreeNode{root}
 	for len(q) > 0 {
-		tmp := q
+		t := q
 		q = nil
 		// 计算下一层的节点值之和
 		nextLevelSum := 0
-		for _, node := range tmp {
+		for _, node := range t {
 			if node.Left != nil {
 				q = append(q, node.Left)
 				nextLevelSum += node.Left.Val
@@ -26,7 +26,7 @@ func replaceValueInTree(root *TreeNode) *TreeNode {
 		}
 
 		// 再次遍历
-		for _, node := range tmp {
+		for _, node := range t {
 			val := 0
 			if node.Left != nil {
 				val += node.Left.Val
