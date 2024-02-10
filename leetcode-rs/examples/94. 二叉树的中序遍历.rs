@@ -21,17 +21,19 @@ impl TreeNode {
 }
 use std::cell::RefCell;
 use std::rc::Rc;
+type Tree = Option<Rc<RefCell<TreeNode>>>;
 impl Solution {
     pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        type Tree = Option<Rc<RefCell<TreeNode>>>;
-        let ans = Vec::new();
-        fn dfs(root: Tree, ans: Vec<i32>) {
-            if let Some(node) = &root {
-                Self::dfs(node.borrow().left)
-            }
-        }
-        dfs(root.clone(), &ans);
+        let mut ans = Vec::new();
+        Self::dfs(root.clone(), &mut ans);
         ans
+    }
+    fn dfs(root: Tree, ans: &mut Vec<i32>) {
+        if let Some(node) = &root {
+            Self::dfs(node.borrow().left.clone(), ans);
+            ans.push(node.borrow().val);
+            Self::dfs(node.borrow().right.clone(), ans);
+        }
     }
 }
 

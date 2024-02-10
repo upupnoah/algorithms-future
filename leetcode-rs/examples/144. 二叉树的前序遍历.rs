@@ -40,17 +40,7 @@ impl Solution {
         let mut res = Vec::new();
         let mut stk = vec![];
         let mut node = root;
-        while node.is_some() || !stk.is_empty() {
-            while let Some(n) = node {
-                ans.push(n.borrow().val);
-                node = n.borrow_mut().left.take();
-                stk.push(n)
-            }
-            if let Some(n) = stk.pop() {
-                node = n.borrow_mut().right.take();
-            }
-        }
-        res
+        while node.is_some() || stk.len() > 0 {}
     }
 }
 
