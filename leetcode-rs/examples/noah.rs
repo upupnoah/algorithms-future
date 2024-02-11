@@ -42,7 +42,7 @@ impl Solution {
         let mut node = root;
         while node.is_some() || !stk.is_empty() {
             while let Some(n) = node {
-                ans.push(n.borrow().val);
+                res.push(n.borrow().val);
                 node = n.borrow_mut().left.take();
                 stk.push(n)
             }

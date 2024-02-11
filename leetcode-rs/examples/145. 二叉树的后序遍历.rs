@@ -22,36 +22,43 @@ impl TreeNode {
 use std::cell::RefCell;
 use std::rc::Rc;
 type Tree = Option<Rc<RefCell<TreeNode>>>;
+
 impl Solution {
-    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = vec![];
         Self::dfs(root.clone(), &mut res);
         res
     }
     fn dfs(root: Tree, res: &mut Vec<i32>) {
         if let Some(node) = root {
-            res.push(node.borrow().val);
             Self::dfs(node.borrow().left.clone(), res);
             Self::dfs(node.borrow().right.clone(), res);
+            res.push(node.borrow().val);
         }
     }
 
-    pub fn preorder_traversal_stack(root: Tree) -> Vec<i32> {
-        let mut res = Vec::new();
+    pub fn postorder_traversal_stack(root: Tree) -> Vec<i32> {
         let mut stk = vec![];
+        let mut res = vec![];
         let mut node = root;
+        let mut prev = None;
         while node.is_some() || !stk.is_empty() {
             while let Some(n) = node {
-                res.push(n.borrow().val);
                 node = n.borrow_mut().left.take();
                 stk.push(n)
             }
             if let Some(n) = stk.pop() {
-                node = n.borrow_mut().right.take();
+                if n.borrow().right.is_none() || n.borrow().right == prev {
+                    res.push(n.borrow().val);
+                    prev = Some(n);
+                    node = None;
+                } else {
+                    node = n.borrow_mut().right.take();
+                    stk.push(n);
+                }
             }
         }
         res
     }
 }
-
 fn main() {}
