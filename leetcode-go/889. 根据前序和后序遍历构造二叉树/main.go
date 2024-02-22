@@ -1,8 +1,8 @@
 package main
 
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 
@@ -15,7 +15,7 @@ func constructFromPrePost(preorder []int, postorder []int) *TreeNode {
 		return root
 	}
 	idx := 0
-	for i, v := range postorder{
+	for i, v := range postorder {
 		if preorder[1] == v {
 			idx = i // 左子树的根节点位置
 			break
