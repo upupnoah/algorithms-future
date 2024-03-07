@@ -7,7 +7,7 @@ func findKOr(nums []int, k int) (ans int) {
 			cnt1 += x >> i & 1
 		}
 		if cnt1 >= k {
-			ans |= 1 << i
+			ans |= 1 << i 
 		}
 	}
 	return ans
