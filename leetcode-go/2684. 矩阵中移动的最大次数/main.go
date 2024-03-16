@@ -1,31 +1,6 @@
 package main
 
 func maxMoves(gird [][]int) int {
-	// n, m := len(gird), len(gird[0])
-	// type pair struct{ x, y int }
-	// var q []pair
-	// for i := 0; i < n; i++ {
-	// 	q = append(q, pair{i, 0})
-	// }
-	// dx, dy := []int{-1, 0, 1}, []int{1, 1, 1}
-	// ans := -1
-	// for len(q) > 0 {
-	// 	var t []pair
-	// 	for _, p := range q {
-	// 		x, y := p.x, p.y
-	// 		for i := 0; i < 3; i++ {
-	// 			nx, ny := x+dx[i], y+dy[i]
-	// 			if nx < 0 || nx >= n || ny < 0 || ny >= m || gird[nx][ny] <= gird[x][y] {
-	// 				continue
-	// 			}
-	// 			t = append(t, pair{nx, ny})
-	// 		}
-	// 	}
-
-	// 	ans++
-	// 	q = t
-	// }
-	// return ans
 	m, n := len(gird), len(gird[0])
 	q := make([]int, m)
 	for i := range q {
@@ -48,4 +23,38 @@ func maxMoves(gird [][]int) int {
 		}
 	}
 	return n - 1
+}
+
+func maxMoves2(gird [][]int) int {
+	n, m := len(gird), len(gird[0])
+	type pair struct{ x, y int }
+	var q []pair
+	vis := make([][]bool, n)
+	for i := range vis {
+		vis[i] = make([]bool, m)
+	}
+	for i := 0; i < n; i++ {
+		q = append(q, pair{i, 0})
+		vis[i][0] = true
+	}
+	dx, dy := []int{-1, 0, 1}, []int{1, 1, 1}
+
+	ans := -1
+	for len(q) > 0 {
+		var t []pair
+		for _, p := range q {
+			x, y := p.x, p.y
+			for i := 0; i < 3; i++ {
+				nx, ny := x+dx[i], y+dy[i]
+				if vis[nx][ny] || nx < 0 || nx >= n || ny < 0 || ny >= m || gird[nx][ny] <= gird[x][y] {
+					continue
+				}
+				vis[nx][ny] = true
+				t = append(t, pair{nx, ny})
+			}
+		}
+		ans++
+		q = t
+	}
+	return ans
 }
